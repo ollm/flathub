@@ -19,12 +19,10 @@ modules:
     build-commands:
       - mkdir -p /app/main/
       - cp -r  * /app/main/
-      - install -D 16x16.png /app/share/icons/hicolor/16x16/apps/app.opencomic.OpenComic.png
-      - install -D 32x32.png /app/share/icons/hicolor/32x32/apps/app.opencomic.OpenComic.png
-      - install -D 48x48.png /app/share/icons/hicolor/48x48/apps/app.opencomic.OpenComic.png
-      - install -D 64x64.png /app/share/icons/hicolor/64x64/apps/app.opencomic.OpenComic.png
-      - install -D 128x128.png /app/share/icons/hicolor/128x128/apps/app.opencomic.OpenComic.png
-      - install -D 256x256.png /app/share/icons/hicolor/256x256/apps/app.opencomic.OpenComic.png
+      - |
+        for size in 16 32 48 64 128 256; do
+          install -D ${size}x${size}.png /app/share/icons/hicolor/${size}x${size}/apps/app.opencomic.OpenComic.png
+        done
       - install -D app.opencomic.OpenComic.metainfo.xml --target-directory=/app/share/metainfo/
       - install -D app.opencomic.OpenComic.desktop --target-directory=/app/share/applications/
       - install -D run.sh --target-directory=/app/bin/
